@@ -48,6 +48,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         FHomeBtnFind.setOnClickListener{
+            FHomeApiLoading.visibility = View.VISIBLE
             val name = FHomeTxtInputMovie.editText?.text.toString()
             if(name == ""){
                 Toast.makeText(
@@ -59,6 +60,7 @@ class HomeFragment : Fragment() {
                 closeKeyboard(FHomeTxtInputMovie)
                 ApiClient.getMoviesService().searchMoviesName(name).enqueue(object: Callback<TMDBClass>{
                     override fun onFailure(call: Call<TMDBClass>, t: Throwable) {
+                        FHomeApiLoading.visibility = View.INVISIBLE
                         Toast.makeText(
                                 context,
                                 R.string.error_api_retrofit,
@@ -67,6 +69,7 @@ class HomeFragment : Fragment() {
                     }
 
                     override fun onResponse(call: Call<TMDBClass>, response: Response<TMDBClass>) {
+                        FHomeApiLoading.visibility = View.INVISIBLE
                         if(response.code() == 200){
                             FHomeRcViewListMovie.adapter = TMDBAdapter(response.body()!!.results)
                             FHomeRcViewListMovie.layoutManager = LinearLayoutManager(
