@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Retrofit_Room_Movies</string>
+    <string name="title_home">Find Movies!</string>
+    <string name="title_dashboard">See Favorites!</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="btn_search_api">Find Movie!</string>
+    <string name="default_date">Release Date: %s</string>
+    <string name="error_fill_in_movie_name">Please fill in the movie name in the box!</string>
+    <string name="error_api_retrofit">Sorry, the API failed =(</string>
+</resources>
