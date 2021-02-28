@@ -11,11 +11,9 @@ import com.example.retrofit_room_movies.R
 import com.example.retrofit_room_movies.holder_classes.Result
 import com.squareup.picasso.Picasso
 
-class TMDBAdapter(val response: List<Result>, val ctx: Context): RecyclerView.Adapter<TMDBAdapter.TMDBViewHolder>() {
+class TMDBAdapter(val response: List<Result>): RecyclerView.Adapter<TMDBAdapter.TMDBViewHolder>() {
     class TMDBViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
         val title: TextView = itemView.findViewById(R.id.RcViewSearchTitle)
-        val description: TextView = itemView.findViewById(R.id.RcViewSearchDescription)
-        val date: TextView = itemView.findViewById(R.id.RcViewSearchDate)
         val movieImg: ImageView = itemView.findViewById(R.id.RcViewSearchImgVw)
     }
 
@@ -33,9 +31,7 @@ class TMDBAdapter(val response: List<Result>, val ctx: Context): RecyclerView.Ad
 
     override fun onBindViewHolder(holder: TMDBViewHolder, position: Int) {
         val data = response[position]
-        holder.date.text = String.format(ctx.resources.getString(R.string.default_date),data.release_date)
         holder.title.text = data.original_title
-        holder.description.text = data.overview
 
         Picasso.get().load("https://image.tmdb.org/t/p/original"+data.poster_path).into(holder.movieImg)
     }

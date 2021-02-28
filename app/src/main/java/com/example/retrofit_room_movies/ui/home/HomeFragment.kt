@@ -67,13 +67,19 @@ class HomeFragment : Fragment() {
                     }
 
                     override fun onResponse(call: Call<TMDBClass>, response: Response<TMDBClass>) {
-                        if(response.code() == 200 || response.body()?.results?.size != null){
-                            FHomeRcViewListMovie.adapter = TMDBAdapter(response.body()!!.results, context!!)
+                        if(response.code() == 200){
+                            FHomeRcViewListMovie.adapter = TMDBAdapter(response.body()!!.results)
                             FHomeRcViewListMovie.layoutManager = LinearLayoutManager(
                                     context,
                                     LinearLayoutManager.HORIZONTAL,
                                     false
                             )
+                        }else{
+                            Toast.makeText(
+                                    context,
+                                    R.string.error_response_not_200,
+                                    Toast.LENGTH_LONG
+                            ).show()
                         }
                     }
                 })
