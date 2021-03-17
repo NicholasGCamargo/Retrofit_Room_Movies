@@ -8,4 +8,5 @@
     <string name="error_fill_in_movie_name">Please fill in the movie name in the box!</string>
     <string name="error_api_retrofit">Sorry, the API failed =(</string>
     <string name="error_response_not_200">Sorry, the API returned Nothing.</string>
+    <string name="text_home_browse_api">Search for a Movie by typing its name!</string>
 </resources>

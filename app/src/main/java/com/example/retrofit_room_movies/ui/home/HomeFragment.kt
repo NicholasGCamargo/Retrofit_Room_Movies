@@ -16,6 +16,7 @@ import com.example.retrofit_room_movies.R
 import com.example.retrofit_room_movies.adapter.TMDBAdapter
 import com.example.retrofit_room_movies.configuration_files.TMDBClass
 import com.example.retrofit_room_movies.configuration_files.objects.ApiClient
+import com.example.retrofit_room_movies.configuration_files.viewModel.InformationViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -23,20 +24,19 @@ import retrofit2.Response
 
 class HomeFragment : Fragment() {
 
-    private lateinit var homeViewModel: HomeViewModel
+    private lateinit var informationViewModel: InformationViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        homeViewModel =
-                ViewModelProvider(this).get(HomeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_home, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+
+        activity?.let {
+            informationViewModel = ViewModelProvider(it).get(InformationViewModel::class.java)
+        }
+
         return root
     }
 
@@ -71,7 +71,9 @@ class HomeFragment : Fragment() {
                     override fun onResponse(call: Call<TMDBClass>, response: Response<TMDBClass>) {
                         FHomeApiLoading.visibility = View.INVISIBLE
                         if(response.code() == 200){
-                            FHomeRcViewListMovie.adapter = TMDBAdapter(response.body()!!.results)
+                            FHomeRcViewListMovie.adapter = TMDBAdapter(response.body()!!.results){
+                                informationViewModel.item = it
+                            }
                             FHomeRcViewListMovie.layoutManager = LinearLayoutManager(
                                     context,
                                     LinearLayoutManager.HORIZONTAL,
