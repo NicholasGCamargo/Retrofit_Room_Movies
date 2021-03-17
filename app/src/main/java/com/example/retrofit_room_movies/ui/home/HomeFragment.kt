@@ -14,8 +14,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.retrofit_room_movies.R
 import com.example.retrofit_room_movies.adapter.TMDBAdapter
-import com.example.retrofit_room_movies.holder_classes.TMDBClass
-import com.example.retrofit_room_movies.objects.ApiClient
+import com.example.retrofit_room_movies.configuration_files.TMDBClass
+import com.example.retrofit_room_movies.configuration_files.objects.ApiClient
 import kotlinx.android.synthetic.main.fragment_home.*
 import retrofit2.Call
 import retrofit2.Callback

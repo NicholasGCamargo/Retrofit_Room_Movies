@@ -1,4 +1,4 @@
-package com.example.retrofit_room_movies.ui.dashboard
+package com.example.retrofit_room_movies.ui.favorites
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -1,4 +1,4 @@
-package com.example.retrofit_room_movies.holder_classes
+package com.example.retrofit_room_movies.configuration_files
 
 data class Result(
     val id: Int,

@@ -1,9 +1,8 @@
-package com.example.retrofit_room_movies.services
+package com.example.retrofit_room_movies.configuration_files.services
 
-import com.example.retrofit_room_movies.holder_classes.TMDBClass
+import com.example.retrofit_room_movies.configuration_files.TMDBClass
 import retrofit2.Call
 import retrofit2.http.GET
-import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface RetrofitService {

@@ -1,6 +1,5 @@
 package com.example.retrofit_room_movies.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.retrofit_room_movies.R
-import com.example.retrofit_room_movies.holder_classes.Result
+import com.example.retrofit_room_movies.configuration_files.Result
 import com.squareup.picasso.Picasso
 
 class TMDBAdapter(val response: List<Result>): RecyclerView.Adapter<TMDBAdapter.TMDBViewHolder>() {

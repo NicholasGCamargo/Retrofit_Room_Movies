@@ -1,4 +1,4 @@
-package com.example.retrofit_room_movies.ui.notifications
+package com.example.retrofit_room_movies.ui.information
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

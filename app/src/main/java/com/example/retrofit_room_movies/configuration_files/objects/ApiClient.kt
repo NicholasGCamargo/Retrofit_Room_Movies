@@ -1,6 +1,6 @@
-package com.example.retrofit_room_movies.objects
+package com.example.retrofit_room_movies.configuration_files.objects
 
-import com.example.retrofit_room_movies.services.RetrofitService
+import com.example.retrofit_room_movies.configuration_files.services.RetrofitService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
