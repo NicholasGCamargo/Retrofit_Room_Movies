@@ -1,6 +1,7 @@
 package com.example.retrofit_room_movies.ui.home
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,12 +12,14 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.retrofit_room_movies.R
 import com.example.retrofit_room_movies.adapter.TMDBAdapter
 import com.example.retrofit_room_movies.configuration_files.TMDBClass
 import com.example.retrofit_room_movies.configuration_files.objects.ApiClient
 import com.example.retrofit_room_movies.configuration_files.viewModel.InformationViewModel
+import com.example.retrofit_room_movies.ui.information.NotificationsFragment
 import kotlinx.android.synthetic.main.fragment_home.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -72,7 +75,9 @@ class HomeFragment : Fragment() {
                         FHomeApiLoading.visibility = View.INVISIBLE
                         if(response.code() == 200){
                             FHomeRcViewListMovie.adapter = TMDBAdapter(response.body()!!.results){
-                                informationViewModel.item = it
+                                val bundle = Bundle()
+                                bundle.putParcelable("movieInformations",it)
+                                findNavController().navigate(R.id.navigation_notifications, bundle)
                             }
                             FHomeRcViewListMovie.layoutManager = LinearLayoutManager(
                                     context,
