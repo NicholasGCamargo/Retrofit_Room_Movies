@@ -1,8 +1,8 @@
 package com.example.retrofit_room_movies.configuration_files.viewModel
 
 import androidx.lifecycle.ViewModel
-import com.example.retrofit_room_movies.configuration_files.Result
+import com.example.retrofit_room_movies.configuration_files.TMDBClass
 
 class InformationViewModel: ViewModel() {
-    var item: Result? = null
+    var item: TMDBClass? = null
 }

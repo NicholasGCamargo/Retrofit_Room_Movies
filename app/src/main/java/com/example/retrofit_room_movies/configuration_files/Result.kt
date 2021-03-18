@@ -21,7 +21,7 @@ data class Result(
     }
 
     override fun toString(): String {
-        return "Id: %d\nTitle: %s\nOverview: %s\nReleaseDate: %s\nPath: %s".format(id, original_title,overview,release_date,poster_path)
+        return "Title: %s\n\nSynopsis: %s\n\nReleaseDate: %s".format(original_title,overview,release_date)
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {

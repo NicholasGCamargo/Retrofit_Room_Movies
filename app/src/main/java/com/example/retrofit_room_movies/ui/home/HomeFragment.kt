@@ -50,6 +50,19 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if(informationViewModel.item != null){
+            FHomeRcViewListMovie.adapter = TMDBAdapter(informationViewModel.item!!.results){
+                val bundle = Bundle()
+                bundle.putParcelable(R.string.key_movie_informations.toString(),it)
+                findNavController().navigate(R.id.navigation_notifications, bundle)
+            }
+            FHomeRcViewListMovie.layoutManager = LinearLayoutManager(
+                    context,
+                    LinearLayoutManager.HORIZONTAL,
+                    false
+            )
+        }
+
         FHomeBtnFind.setOnClickListener{
             FHomeApiLoading.visibility = View.VISIBLE
             val name = FHomeTxtInputMovie.editText?.text.toString()
@@ -76,7 +89,7 @@ class HomeFragment : Fragment() {
                         if(response.code() == 200){
                             FHomeRcViewListMovie.adapter = TMDBAdapter(response.body()!!.results){
                                 val bundle = Bundle()
-                                bundle.putParcelable("movieInformations",it)
+                                bundle.putParcelable(R.string.key_movie_informations.toString(),it)
                                 findNavController().navigate(R.id.navigation_notifications, bundle)
                             }
                             FHomeRcViewListMovie.layoutManager = LinearLayoutManager(
@@ -84,6 +97,7 @@ class HomeFragment : Fragment() {
                                     LinearLayoutManager.HORIZONTAL,
                                     false
                             )
+                            informationViewModel.item = response.body()!!
                         }else{
                             Toast.makeText(
                                     context,
